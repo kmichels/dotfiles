@@ -57,6 +57,9 @@ defaults write com.apple.screencapture type -string "png"
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
@@ -195,3 +198,22 @@ sudo chflags uchg /Private/var/vm/sleepimage
 
 # Disable the sudden motion sensor as it’s not useful for SSDs
 sudo pmset -a sms 0
+
+
+###############################################################################
+# Terminal and iTerm
+###############################################################################
+
+# Don’t display the annoying prompt when quitting iTerm
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+
+###############################################################################
+# Spotlight
+###############################################################################
+
+# Disable Spotlight indexing for any volume that gets mounted and has not yet
+# been indexed before.
+
+# Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
+sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
